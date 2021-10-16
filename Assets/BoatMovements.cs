@@ -7,9 +7,13 @@ public class BoatMovements : MonoBehaviour
     public float speed;
     private Rigidbody rb;
 
-    private void SetVelocity()
+    void Start()
     {
         rb = GetComponent<Rigidbody>();
+    }
+
+    private void SetVelocity()
+    {
         rb.velocity = new Vector3 (0, 0, speed);
     }
 
