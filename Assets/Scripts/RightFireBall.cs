@@ -5,21 +5,24 @@ using UnityEngine;
 public class RightFireBall : MonoBehaviour
 {
     public GameObject ball;
-    public float fireSpeed;
+
+    [SerializeField]
+    private float fireSpeed;
+    [SerializeField]
+    private float fireRate = 1.0f;
 
     private float nextFire;
-    public float fireRate = 1.0f;
 
     private void Fire()
     {
-        if (Input.GetButtonDown("Fire2") && Time.time > nextFire)
+        /*if (Input.GetButtonDown("Fire2") && Time.time > nextFire)
         {
             GameObject clone = Instantiate(ball, transform.position, transform.rotation);
             Rigidbody rb = clone.AddComponent<Rigidbody>();
             rb.velocity = -transform.forward * Time.deltaTime * fireSpeed;
 
             nextFire = Time.time + fireRate;
-        }
+        }*/
     }
 
     // Start is called before the first frame update

@@ -1,24 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class BoatMovements : MonoBehaviour
 {
-    public float minSpeed;
-    public float maxSpeed;
-    public float speed;
-    public float steerSpeed;
+    [SerializeField]
+    private float minSpeed;
+    [SerializeField]
+    private float maxSpeed;
+    [SerializeField]
+    private float speed;
+    [SerializeField]
+    private float steerSpeed;
 
     private Rigidbody rb;
+
+    private Vector2 movementInput = Vector2.zero;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        movementInput = context.ReadValue<Vector2>();
+    }
 
     private void SetVelocity()
     {
-        float axisValue = Input.GetAxis("Vertical");
+        float axisValue = movementInput.y;
         if (axisValue < 0 && speed > minSpeed || axisValue > 0 && speed < maxSpeed)
             speed += axisValue;
         rb.velocity = transform.forward * Time.deltaTime * speed;
@@ -26,7 +37,7 @@ public class BoatMovements : MonoBehaviour
 
     private void Steer()
     {
-        float steering = Input.GetAxis("Horizontal") * steerSpeed;
+        float steering = movementInput.x * steerSpeed;
         rb.MoveRotation(rb.rotation * Quaternion.Euler(new Vector3(0, steering, 0) * Time.deltaTime));
     }
 
