@@ -5,6 +5,7 @@ using UnityEngine;
 public class BoatMovements : MonoBehaviour
 {
     public float speed;
+    public float steerSpeed;
     private Rigidbody rb;
 
     void Start()
@@ -14,12 +15,19 @@ public class BoatMovements : MonoBehaviour
 
     private void SetVelocity()
     {
-        rb.velocity = new Vector3 (0, 0, speed);
+        rb.velocity = transform.forward * Time.deltaTime * speed;
+    }
+
+    private void Steer()
+    {
+        float steering = Input.GetAxis("Horizontal") * steerSpeed;
+        rb.MoveRotation(rb.rotation * Quaternion.Euler(new Vector3(0, steering, 0) * Time.deltaTime));
     }
 
     // Update is called once per frame
     void Update()
     {
         SetVelocity();
+        Steer();
     }
 }
