@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class BoatMovements : MonoBehaviour
 {
+    public float minSpeed;
+    public float maxSpeed;
     public float speed;
     public float steerSpeed;
+
     private Rigidbody rb;
 
     void Start()
@@ -15,6 +18,9 @@ public class BoatMovements : MonoBehaviour
 
     private void SetVelocity()
     {
+        float axisValue = Input.GetAxis("Vertical");
+        if (axisValue < 0 && speed > minSpeed || axisValue > 0 && speed < maxSpeed)
+            speed += axisValue;
         rb.velocity = transform.forward * Time.deltaTime * speed;
     }
 
