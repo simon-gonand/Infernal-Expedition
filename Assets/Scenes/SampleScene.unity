@@ -380,7 +380,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSpeed: 0
   maxSpeed: 1000
-  speed: 0
+  speed: 100
   steerSpeed: 30
 --- !u!65 &454709520
 BoxCollider:
@@ -436,9 +436,13 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 5ae60349-0a88-473f-ae2b-c54198e36d4a
     m_ActionName: Movements/New action[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0b024dc9-c84a-425e-b339-14a4e7c54efd
+    m_ActionName: PlayerMovements/Movements[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard
-  m_DefaultActionMap: Movements
+  m_DefaultActionMap: BoatMovements
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!1 &459688985
@@ -1092,9 +1096,9 @@ GameObject:
   - component: {fileID: 1962903821}
   - component: {fileID: 1962903820}
   - component: {fileID: 1962903819}
-  - component: {fileID: 1962903824}
-  - component: {fileID: 1962903826}
   - component: {fileID: 1962903825}
+  - component: {fileID: 1962903826}
+  - component: {fileID: 1962903824}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Player
@@ -1207,7 +1211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 6a80bb310a6a0ce449e5422ea5ce69d1, type: 3}
+  m_Actions: {fileID: -944628639613478452, guid: 9ce1c06c1cd5dde40a51584221730774, type: 3}
   m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -1220,6 +1224,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5ae60349-0a88-473f-ae2b-c54198e36d4a
+    m_ActionName: BoatMovements/Movements[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1962903825}
@@ -1234,11 +1242,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: c829a201-fb45-4313-a787-7922cd4d9712
-    m_ActionName: Player/Movements[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+    m_ActionId: 0b024dc9-c84a-425e-b339-14a4e7c54efd
+    m_ActionName: PlayerMovements/Movements[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: PlayerMovements
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &1962903825

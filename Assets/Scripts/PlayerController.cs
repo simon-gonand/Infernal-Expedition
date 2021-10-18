@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public void onMove(InputAction.CallbackContext context)
     {
         movementInput = context.ReadValue<Vector2>();
+        Debug.Log("inputs");
     }
 
     // Update is called once per frame
