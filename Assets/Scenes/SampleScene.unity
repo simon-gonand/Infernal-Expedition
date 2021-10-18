@@ -366,7 +366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSpeed: 0
   maxSpeed: 1000
-  speed: 100
+  speed: 0
   steerSpeed: 30
   selfRigidBody: {fileID: 454709518}
 --- !u!65 &454709520
@@ -1035,6 +1035,7 @@ GameObject:
   - component: {fileID: 1962903819}
   - component: {fileID: 1962903825}
   - component: {fileID: 1962903824}
+  - component: {fileID: 1962903826}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Player
@@ -1209,7 +1210,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 334e28f01c7c7d248bf7ca8196840719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 0.5
+  playerSpeed: 1
+  controller: {fileID: 1962903826}
   boatRigidbody: {fileID: 454709518}
   boatObj: {fileID: 454709512}
   self: {fileID: 1962903823}
+--- !u!143 &1962903826
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962903818}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
