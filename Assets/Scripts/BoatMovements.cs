@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class BoatMovements : MonoBehaviour
 {
     [SerializeField]
+    [Header("Stats")]
     private float minSpeed;
     [SerializeField]
     private float maxSpeed;
@@ -13,14 +14,14 @@ public class BoatMovements : MonoBehaviour
     private float speed;
     [SerializeField]
     private float steerSpeed;
-
-    private Rigidbody rb;
+    [SerializeField]
+    [Header("References")]
+    public Rigidbody selfRigidBody;
 
     private Vector2 movementInput = Vector2.zero;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
     }
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -32,13 +33,13 @@ public class BoatMovements : MonoBehaviour
         float axisValue = movementInput.y;
         if (axisValue < 0 && speed > minSpeed || axisValue > 0 && speed < maxSpeed)
             speed += axisValue;
-        rb.velocity = transform.forward * Time.deltaTime * speed;
+        selfRigidBody.velocity = transform.forward * Time.deltaTime * speed;
     }
 
     private void Steer()
     {
         float steering = movementInput.x * steerSpeed;
-        rb.MoveRotation(rb.rotation * Quaternion.Euler(new Vector3(0, steering, 0) * Time.deltaTime));
+        selfRigidBody.MoveRotation(selfRigidBody.rotation * Quaternion.Euler(new Vector3(0, steering, 0) * Time.deltaTime));
     }
 
     // Update is called once per frame

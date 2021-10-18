@@ -8,30 +8,55 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField]
     private float playerSpeed = 2.0f;
-
+    [SerializeField]
     private CharacterController controller;
+    [SerializeField]
+    private Rigidbody boatRigidbody;
+    [SerializeField]
+    private GameObject boatObj;
+    [SerializeField]
+    private Transform self;
 
-    private Vector2 movementInput = Vector2.zero;
+    private Vector2 playerMovementInput = Vector2.zero;
+    private bool isOnBoat;
+    private Vector3 currentMove;
 
     // Start is called before the first frame update
     void Start()
     {
-        controller = gameObject.GetComponent<CharacterController>();
+        isOnBoat = false;
     }
 
-    public void onMove(InputAction.CallbackContext context)
+    public void OnMove(InputAction.CallbackContext context)
     {
-        movementInput = context.ReadValue<Vector2>();
-        Debug.Log("inputs");
+        playerMovementInput = context.ReadValue<Vector2>();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject == boatObj)
+            isOnBoat = true;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject == boatObj)
+            isOnBoat = false;
+    }
+
+    private void PlayerMovement()
+    {
+        Vector3 move = new Vector3(playerMovementInput.x, 0.0f, playerMovementInput.y);
+        if (isOnBoat && boatRigidbody.velocity != Vector3.zero)
+            move.Scale(boatRigidbody.velocity);
+        controller.Move(move * Time.deltaTime * playerSpeed);
+        if (move != Vector3.zero)
+            self.forward = move;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 move = new Vector3(movementInput.x, 0.0f, movementInput.y);
-        controller.Move(move * Time.deltaTime * playerSpeed);
-
-        if (move != Vector3.zero)
-            gameObject.transform.forward = move;
+        PlayerMovement();
     }
 }
