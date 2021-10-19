@@ -20,6 +20,15 @@ public class BoatMovements : MonoBehaviour
 
     private Vector2 movementInput = Vector2.zero;
 
+
+    public static BoatMovements instance;
+
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     void Start()
     {
     }

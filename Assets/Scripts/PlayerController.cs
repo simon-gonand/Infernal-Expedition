@@ -10,27 +10,25 @@ public class PlayerController : MonoBehaviour
     private float playerSpeed = 2.0f;
 
     [Header("Boat References")]
-    [SerializeField]
-    private Rigidbody boatRigidbody;
-    [SerializeField]
-    private GameObject boatObj;
-    [SerializeField]
-    private Transform boatTransform;
+    public Transform boatTransform;
 
     [Header("Self References")]
     [SerializeField]
     private Transform self;
     [SerializeField]
     private Rigidbody selfRigidbody;
+    [SerializeField]
+    private PlayerInput playerInput;
+
 
     private Vector2 playerMovementInput = Vector2.zero;
-    private bool isOnBoat;
-    private GameObject container;
 
     // Start is called before the first frame update
     void Start()
     {
-        isOnBoat = false;
+        boatTransform = BoatMovements.instance.transform;
+        
+        playerInput.actionEvents[1].AddListener(BoatMovements.instance.OnMove);
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -40,26 +38,13 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == boatObj)
-            isOnBoat = true;
-
-        container = new GameObject("container");
-
-        Vector3 myScale = boatTransform.localScale;
-        container.transform.localScale = new Vector3(1f/myScale.x, 1f/myScale.y, 1f/myScale.z);
-
-        container.transform.SetParent(boatTransform, false);
-        self.SetParent(container.transform);
+        self.SetParent(boatTransform);
         selfRigidbody.isKinematic = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject == boatObj)
-            isOnBoat = false;
-
         self.SetParent(null);
-        Destroy(container);
         selfRigidbody.isKinematic = false;
     }
 
