@@ -31,6 +31,7 @@ public class BoatMovements : MonoBehaviour
 
     void Start()
     {
+        
     }
     public void OnMove(InputAction.CallbackContext context)
     {
