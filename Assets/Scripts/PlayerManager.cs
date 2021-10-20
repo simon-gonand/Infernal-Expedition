@@ -5,24 +5,34 @@ using UnityEngine.InputSystem;
 
 public class PlayerManager : MonoBehaviour
 {
-    public PlayerInputManager pim;
-    public Transform boat;
+    [SerializeField]
+    private Material player1Material;
+    [SerializeField]
+    private Material player2Material;
+    [SerializeField]
+    private Material player3Material;
+    [SerializeField]
+    private Material player4Material;
 
-    // Start is called before the first frame update
-    void Start()
+
+    public void OnPlayerJoined(PlayerInput playerInput)
     {
-        pim.onPlayerJoined += AssignBoat;
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
-    void AssignBoat(PlayerInput pi)
-    {
-        Debug.Log("Hello World !");
-        pi.transform.GetComponent<PlayerController>().boatTransform = boat;
+        switch (playerInput.playerIndex)
+        {
+            case 0:
+                playerInput.gameObject.GetComponent<MeshRenderer>().material = player1Material;
+                break;
+            case 1:
+                playerInput.gameObject.GetComponent<MeshRenderer>().material = player2Material;
+                break;
+            case 2:
+                playerInput.gameObject.GetComponent<MeshRenderer>().material = player3Material;
+                break;
+            case 3:
+                playerInput.gameObject.GetComponent<MeshRenderer>().material = player4Material;
+                break;
+            default:
+                break;
+        }
     }
 }
