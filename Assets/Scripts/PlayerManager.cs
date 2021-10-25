@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerManager : MonoBehaviour
 {
+    [Header("Player Materials")]
     [SerializeField]
     private Material player1Material;
     [SerializeField]
@@ -13,7 +14,6 @@ public class PlayerManager : MonoBehaviour
     private Material player3Material;
     [SerializeField]
     private Material player4Material;
-
 
     public void OnPlayerJoined(PlayerInput playerInput)
     {
@@ -34,5 +34,8 @@ public class PlayerManager : MonoBehaviour
             default:
                 break;
         }
+        Vector3 playerSpawnPosition = BoatMovements.instance.transform.position;
+        playerSpawnPosition.y += 1.0f;
+        playerInput.gameObject.transform.position = playerSpawnPosition;
     }
 }
