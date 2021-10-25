@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
 
 
     private Vector2 playerMovementInput = Vector2.zero;
+    private bool isGrounded;
 
     // Start is called before the first frame update
     void Start()
@@ -29,12 +30,34 @@ public class PlayerController : MonoBehaviour
         boatTransform = BoatMovements.instance.transform;
         
         playerInput.actionEvents[1].AddListener(BoatMovements.instance.OnMove);
+        isGrounded = false;
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
         playerMovementInput = context.ReadValue<Vector2>();
     }
+
+    private void PlayerMovement()
+    {
+        Vector3 move = new Vector3(playerMovementInput.x, 0.0f, playerMovementInput.y);
+        if (!isGrounded)
+            move.y -= 0.3f;
+        self.Translate(move * Time.deltaTime * playerSpeed, Space.World);
+        move.y = 0.0f;
+        if (move != Vector3.zero)
+            self.forward = move;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        PlayerMovement();
+    }
+
+    /*
+     * Collision and Trigger functions
+     */
 
     private void OnTriggerEnter(Collider other)
     {
@@ -48,17 +71,11 @@ public class PlayerController : MonoBehaviour
         selfRigidbody.isKinematic = false;
     }
 
-    private void PlayerMovement()
+    private void OnCollisionEnter(Collision collision)
     {
-        Vector3 move = new Vector3(playerMovementInput.x, 0.0f, playerMovementInput.y);
-        self.Translate(move * Time.deltaTime * playerSpeed, Space.World);
-        if (move != Vector3.zero)
-            self.forward = move;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        PlayerMovement();
+        if (collision.gameObject.transform.position == BoatMovements.instance.transform.position)
+        {
+            isGrounded = true;
+        }
     }
 }

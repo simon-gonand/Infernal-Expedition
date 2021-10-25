@@ -23,7 +23,6 @@ public class BoatMovements : MonoBehaviour
 
     public static BoatMovements instance;
 
-
     private void Awake()
     {
         instance = this;
