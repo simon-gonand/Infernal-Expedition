@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using DG.Tweening;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -22,15 +24,13 @@ public class PlayerController : MonoBehaviour
 
 
     private Vector2 playerMovementInput = Vector2.zero;
-    private bool isGrounded;
 
     // Start is called before the first frame update
     void Start()
     {
         boatTransform = BoatMovements.instance.transform;
-        
+
         playerInput.actionEvents[1].AddListener(BoatMovements.instance.OnMove);
-        isGrounded = false;
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -41,10 +41,7 @@ public class PlayerController : MonoBehaviour
     private void PlayerMovement()
     {
         Vector3 move = new Vector3(playerMovementInput.x, 0.0f, playerMovementInput.y);
-        if (!isGrounded)
-            move.y -= 0.3f;
         self.Translate(move * Time.deltaTime * playerSpeed, Space.World);
-        move.y = 0.0f;
         if (move != Vector3.zero)
             self.forward = move;
     }
@@ -53,29 +50,5 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         PlayerMovement();
-    }
-
-    /*
-     * Collision and Trigger functions
-     */
-
-    private void OnTriggerEnter(Collider other)
-    {
-        self.SetParent(boatTransform);
-        selfRigidbody.isKinematic = true;
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        self.SetParent(null);
-        selfRigidbody.isKinematic = false;
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.transform.position == BoatMovements.instance.transform.position)
-        {
-            isGrounded = true;
-        }
     }
 }
