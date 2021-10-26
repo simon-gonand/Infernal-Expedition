@@ -4362,7 +4362,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 84
   m_CollisionDetection: 0
 --- !u!65 &128652779
 BoxCollider:
@@ -4372,11 +4372,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 128652776}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.5787182, y: 0.18327808, z: 5.49}
-  m_Center: {x: 0, y: 0.66, z: 0}
+  m_Size: {x: 1.9445078, y: 0.18327808, z: 4.870803}
+  m_Center: {x: 0.005878687, y: 0.66, z: 0.0979743}
 --- !u!65 &128652780
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4388,8 +4388,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.58, y: 1.13, z: 5.49}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.4466096, y: 0.2071349, z: 4.53769}
+  m_Center: {x: 0.0124871135, y: 0.4614325, z: -0.064662814}
 --- !u!64 &128652781
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4399,7 +4399,7 @@ MeshCollider:
   m_GameObject: {fileID: 128652776}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
@@ -4677,7 +4677,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 128652776}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.68, z: -5}
+  m_LocalPosition: {x: 0, y: -0.62, z: -5}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 1780692555}
@@ -35818,6 +35818,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7993942828488961140, guid: b37b3915066995a47b94d4f47f1f027c, type: 3}
+      propertyPath: weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7993942828488961140, guid: b37b3915066995a47b94d4f47f1f027c, type: 3}
       propertyPath: priority
       value: 1
       objectReference: {fileID: 0}
@@ -46607,7 +46611,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh167992
+  m_Name: pb_Mesh178330
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
