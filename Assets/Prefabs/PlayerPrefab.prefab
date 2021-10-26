@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3207150420227362539}
   - component: {fileID: 3207150420227362536}
   - component: {fileID: 3207150420227362537}
-  - component: {fileID: 3207150420227362542}
   - component: {fileID: 3207150420227362548}
   - component: {fileID: 3207150420227362549}
+  - component: {fileID: -5551333406371535273}
   m_Layer: 0
   m_Name: PlayerPrefab
   m_TagString: Player
@@ -99,22 +99,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &3207150420227362542
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3207150420227362543}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!114 &3207150420227362548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,12 +111,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 334e28f01c7c7d248bf7ca8196840719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 1
+  playerSpeed: 3
   boatTransform: {fileID: 0}
   self: {fileID: 3207150420227362538}
-  selfRigidbody: {fileID: 3207150420227362542}
+  selfRigidbody: {fileID: -5551333406371535273}
   playerInput: {fileID: 3207150420227362549}
-  playerInputAction: {fileID: -944628639613478452, guid: 9ce1c06c1cd5dde40a51584221730774, type: 3}
 --- !u!114 &3207150420227362549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,8 +161,28 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 0f3e1167-4ce4-4f50-8dc8-baefb801c04b
     m_ActionName: Controls/BoatMovements[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: cb8182a7-b192-46f5-ae80-27046cc8076c
+    m_ActionName: Controls/PlayerInteraction[/Keyboard/f]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Controls
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!54 &-5551333406371535273
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3207150420227362543}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 3

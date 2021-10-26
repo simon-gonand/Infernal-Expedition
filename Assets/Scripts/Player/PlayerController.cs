@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using DG.Tweening;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,8 +17,8 @@ public class PlayerController : MonoBehaviour
     [Header("Self References")]
     [SerializeField]
     private Transform self;
-    [SerializeField]
-    private Rigidbody selfRigidbody;
+    /*[SerializeField]
+    private Rigidbody selfRigidbody;*/
     [SerializeField]
     private PlayerInput playerInput;
 
@@ -26,26 +28,14 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        boatTransform = BoatMovements.instance.transform;
-        
+        boatTransform = BoatMovements.instance.self;
+
         playerInput.actionEvents[1].AddListener(BoatMovements.instance.OnMove);
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
         playerMovementInput = context.ReadValue<Vector2>();
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        self.SetParent(boatTransform);
-        selfRigidbody.isKinematic = true;
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        self.SetParent(null);
-        selfRigidbody.isKinematic = false;
     }
 
     private void PlayerMovement()
