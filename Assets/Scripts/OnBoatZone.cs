@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StayZone : MonoBehaviour
+public class OnBoatZone : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {

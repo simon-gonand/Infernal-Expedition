@@ -17,8 +17,8 @@ public class PlayerController : MonoBehaviour
     [Header("Self References")]
     [SerializeField]
     private Transform self;
-    [SerializeField]
-    private Rigidbody selfRigidbody;
+    /*[SerializeField]
+    private Rigidbody selfRigidbody;*/
     [SerializeField]
     private PlayerInput playerInput;
 
