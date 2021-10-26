@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Scripts/Controller.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Scripts/Controller/Controller.inputactions'
 
 using System;
 using System.Collections;
@@ -16,12 +16,12 @@ public class @Controller : IInputActionCollection, IDisposable
     ""maps"": [
         {
             ""name"": ""Controls"",
-            ""id"": ""dfc2bf16-7133-4cd6-b026-53ddb7d1a1e2"",
+            ""id"": ""b27e42dd-1ef6-4e9b-ac37-2f32bd699275"",
             ""actions"": [
                 {
                     ""name"": ""PlayerMovements"",
                     ""type"": ""PassThrough"",
-                    ""id"": ""0b024dc9-c84a-425e-b339-14a4e7c54efd"",
+                    ""id"": ""04ac00af-7e50-4866-b008-c5226b5dd8a2"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -29,7 +29,7 @@ public class @Controller : IInputActionCollection, IDisposable
                 {
                     ""name"": ""BoatMovements"",
                     ""type"": ""PassThrough"",
-                    ""id"": ""0f3e1167-4ce4-4f50-8dc8-baefb801c04b"",
+                    ""id"": ""9e3ae14b-ab42-4eca-81a7-8f11f34b106c"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -37,7 +37,7 @@ public class @Controller : IInputActionCollection, IDisposable
                 {
                     ""name"": ""PlayerInteraction"",
                     ""type"": ""Button"",
-                    ""id"": ""cb8182a7-b192-46f5-ae80-27046cc8076c"",
+                    ""id"": ""699e44a5-b181-499c-b086-1bb39970eaa4"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -46,7 +46,7 @@ public class @Controller : IInputActionCollection, IDisposable
             ""bindings"": [
                 {
                     ""name"": ""ZQSD"",
-                    ""id"": ""23ef0ad6-8ca3-4a15-a68f-5b5e61ec974d"",
+                    ""id"": ""9415348a-4bfd-4c97-9c66-0a6293d8af36"",
                     ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -57,7 +57,7 @@ public class @Controller : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""up"",
-                    ""id"": ""7314de2e-a34b-4fcb-bea2-ddd9cf1cc0e7"",
+                    ""id"": ""9d9101eb-9f38-4aae-8c66-ce6745ecbdeb"",
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -68,7 +68,7 @@ public class @Controller : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""down"",
-                    ""id"": ""898d8088-e410-48ab-8339-1e197f433043"",
+                    ""id"": ""a7674b91-de4b-4da8-a46f-52fc4c84a967"",
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -79,7 +79,7 @@ public class @Controller : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""left"",
-                    ""id"": ""a28c1a09-e303-4cf2-8473-8fd72e2576d4"",
+                    ""id"": ""6e918926-0869-4dbc-882c-8a79f04e4e6c"",
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -90,7 +90,7 @@ public class @Controller : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""right"",
-                    ""id"": ""8b5482e4-1588-472a-89b8-165cb6a7dff0"",
+                    ""id"": ""cedb0feb-dc0a-4121-b10f-bc2c200c0c12"",
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -101,7 +101,7 @@ public class @Controller : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""b46a75ce-76f8-4b40-b7fe-1f68d6e7dfb0"",
+                    ""id"": ""076a8b10-4f10-49f4-a4e5-b85a476d6d81"",
                     ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -112,7 +112,7 @@ public class @Controller : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""Arrows"",
-                    ""id"": ""673a5d65-b10d-458c-9fce-20310eb3fdcb"",
+                    ""id"": ""86801f63-810f-4511-94fa-854826542fe1"",
                     ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -123,51 +123,51 @@ public class @Controller : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""up"",
-                    ""id"": ""77beb818-a9f4-4cb5-8c6f-1ca544d22708"",
+                    ""id"": ""c7e8062c-4da1-4648-8f70-5ec6983f23c9"",
                     ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard"",
                     ""action"": ""BoatMovements"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""down"",
-                    ""id"": ""0e779852-ea96-4e9f-8dd8-a86ad4837df1"",
+                    ""id"": ""3bbbea0d-29d2-4032-b737-c0c65e7934cc"",
                     ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard"",
                     ""action"": ""BoatMovements"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""left"",
-                    ""id"": ""24caf6f5-6f41-4d3a-a588-d9dd9956a4b2"",
+                    ""id"": ""2a36bc7b-5c6a-47cf-822f-c365b7ecf361"",
                     ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard"",
                     ""action"": ""BoatMovements"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""right"",
-                    ""id"": ""3ddab53d-e1c4-4fbc-bd8a-bb84c5192929"",
+                    ""id"": ""6231ded2-8810-4c76-a8d7-aecd6a262561"",
                     ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard"",
                     ""action"": ""BoatMovements"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": """",
-                    ""id"": ""15431a2e-634f-4308-ae3d-dfff79243734"",
+                    ""id"": ""b33c6f87-e38f-47d4-a1f8-5220bf572cbb"",
                     ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -178,7 +178,7 @@ public class @Controller : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""fceeb9e4-1199-4cc1-8a1e-0b059892bbdf"",
+                    ""id"": ""6dcd6c43-942d-4188-b594-0f1ed881bdfc"",
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -197,7 +197,7 @@ public class @Controller : IInputActionCollection, IDisposable
             ""devices"": [
                 {
                     ""devicePath"": ""<Keyboard>"",
-                    ""isOptional"": false,
+                    ""isOptional"": true,
                     ""isOR"": false
                 }
             ]
