@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        boatTransform = BoatMovements.instance.transform;
+        boatTransform = BoatMovements.instance.self;
 
         playerInput.actionEvents[1].AddListener(BoatMovements.instance.OnMove);
     }

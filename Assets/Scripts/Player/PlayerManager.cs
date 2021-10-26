@@ -38,7 +38,7 @@ public class PlayerManager : MonoBehaviour
             default:
                 break;
         }
-        Vector3 playerSpawnPosition = BoatMovements.instance.transform.position;
+        Vector3 playerSpawnPosition = BoatMovements.instance.self.position;
         playerSpawnPosition.y += 1.0f;
         playerSpawnPosition.z += playerInput.playerIndex * playerSpawnOffset;
         playerInput.gameObject.transform.position = playerSpawnPosition;

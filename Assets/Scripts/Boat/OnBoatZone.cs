@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class OnBoatZone : MonoBehaviour
 {
+    [SerializeField]
+    private Transform self;
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
         {
-            other.transform.SetParent(this.transform);
+            other.transform.SetParent(self);
             other.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
         }
     }

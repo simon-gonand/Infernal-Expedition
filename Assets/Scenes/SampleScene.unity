@@ -6423,6 +6423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4653d04010734e14ba019f16edfac040, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  self: {fileID: 1141836489}
 --- !u!65 &1141836491
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10095,6 +10096,7 @@ MonoBehaviour:
   speed: 0
   steerSpeed: 30
   selfRigidBody: {fileID: 1743407741}
+  self: {fileID: 1743407748}
 --- !u!54 &1743407741
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11857,6 +11859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080923168fd71644794124dcd59e7663, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  self: {fileID: 2037048179}
 --- !u!4 &2037048179
 Transform:
   m_ObjectHideFlags: 0

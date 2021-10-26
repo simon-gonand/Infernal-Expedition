@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EquipmentManager : MonoBehaviour
 {
+    [SerializeField]
+    private Transform self;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,7 +16,7 @@ public class EquipmentManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = BoatMovements.instance.transform.position;
-        transform.rotation = BoatMovements.instance.transform.rotation;
+        self.position = BoatMovements.instance.self.position;
+        self.rotation = BoatMovements.instance.self.rotation;
     }
 }
