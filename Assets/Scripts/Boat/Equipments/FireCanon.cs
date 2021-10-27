@@ -72,6 +72,8 @@ public class FireCanon : MonoBehaviour, IInteractable
             Rigidbody rb = ballClone.AddComponent<Rigidbody>();
             rb.velocity = transform.forward * Time.deltaTime * fireSpeed;
 
+            ballClone.GetComponent<CanonBallLifeSpan>().SetCanonWhichFired(self);
+
             nextFire = Time.time + fireRate;
         }
     }
