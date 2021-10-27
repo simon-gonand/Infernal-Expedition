@@ -9,7 +9,9 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField]
     [Header("Stat")]
-    private float playerSpeed = 2.0f;
+    private float playerSpeed;
+    [SerializeField]
+    [Range(0,2)]private float interactionDistance;
 
     [Header("Boat References")]
     public Transform boatTransform;
@@ -20,10 +22,13 @@ public class PlayerController : MonoBehaviour
     /*[SerializeField]
     private Rigidbody selfRigidbody;*/
     [SerializeField]
+    private CapsuleCollider selfCollider;
+    [SerializeField]
     private PlayerInput playerInput;
 
 
     private Vector2 playerMovementInput = Vector2.zero;
+    private bool isInteracting = false;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +41,23 @@ public class PlayerController : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         playerMovementInput = context.ReadValue<Vector2>();
+    }
+
+    public void OnInteraction(InputAction.CallbackContext context)
+    {
+        isInteracting = context.action.triggered;
+        if (isInteracting)
+        {
+            Vector3 startRayPos = self.position;
+            startRayPos.y -= self.lossyScale.y / 2;
+
+            RaycastHit hit;
+            int layerMask = 1 << 6;
+            if (Physics.Raycast(startRayPos, self.forward, out hit, interactionDistance, layerMask))
+            {
+                Debug.Log("Player is interacting");
+            }
+        }
     }
 
     private void PlayerMovement()
