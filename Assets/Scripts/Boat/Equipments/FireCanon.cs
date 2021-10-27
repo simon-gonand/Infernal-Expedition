@@ -66,8 +66,10 @@ public class FireCanon : MonoBehaviour, IInteractable
     {
         if (Time.time > nextFire)
         {
-            GameObject clone = Instantiate(ball, transform.position, transform.rotation);
-            Rigidbody rb = clone.AddComponent<Rigidbody>();
+            Vector3 ballSpawnPosition = self.position;
+            ballSpawnPosition.x += self.lossyScale.x;
+            GameObject ballClone = Instantiate(ball, ballSpawnPosition, self.rotation);
+            Rigidbody rb = ballClone.AddComponent<Rigidbody>();
             rb.velocity = transform.forward * Time.deltaTime * fireSpeed;
 
             nextFire = Time.time + fireRate;

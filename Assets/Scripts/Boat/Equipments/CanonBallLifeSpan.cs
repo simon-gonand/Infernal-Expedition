@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class CanonBallLifeSpan : MonoBehaviour
 {
+    [SerializeField]
+    private Transform self;
+
     private void IsUnderWater()
     {
-        if (transform.position.y < 0)
+        if (self.position.y < -1.0f)
         {
             Destroy(gameObject);
         }
