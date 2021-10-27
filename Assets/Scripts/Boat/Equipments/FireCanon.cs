@@ -14,6 +14,7 @@ public class FireCanon : MonoBehaviour, IInteractable
     [SerializeField]
     private Transform self;
     [SerializeField]
+    private Transform snapPoint;
 
     private float nextFire;
 
@@ -21,6 +22,10 @@ public class FireCanon : MonoBehaviour, IInteractable
     {
         player.isInteracting = true;
         // Snap player to the canon
+        Vector3 newPlayerPosition = snapPoint.position;
+        newPlayerPosition.y += player.self.lossyScale.y / 2;
+        player.self.position = newPlayerPosition;
+        player.self.forward = snapPoint.forward;
         // Set unity event controllers just as boat just for canon
         // Player boolean isInteracting?
     }

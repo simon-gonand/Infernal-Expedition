@@ -15,18 +15,14 @@ public class PlayerController : MonoBehaviour
     public Transform boatTransform;
 
     [Header("Self References")]
-    [SerializeField]
-    private Transform self;
+    public Transform self;
     /*[SerializeField]
     private Rigidbody selfRigidbody;*/
-    [SerializeField]
-    private CapsuleCollider selfCollider;
     [SerializeField]
     private PlayerInput playerInput;
 
 
     private Vector2 playerMovementInput = Vector2.zero;
-    private bool interactionButtonTriggered = false;
     private IInteractable interactingWith;
     private bool _isInteracting = false;
     public bool isInteracting { get { return _isInteracting; } set { _isInteracting = value; } }
@@ -46,8 +42,8 @@ public class PlayerController : MonoBehaviour
 
     public void OnInteraction(InputAction.CallbackContext context)
     {
-        interactionButtonTriggered = context.action.triggered;
-        if (!isInteracting && interactionButtonTriggered)
+        //Debug.Log(context.performed);
+        if (!isInteracting && context.performed)
         {
             Vector3 startRayPos = self.position;
             startRayPos.y -= self.lossyScale.y / 2;
@@ -60,7 +56,7 @@ public class PlayerController : MonoBehaviour
                 interactingWith.InteractWith(this);
             }
         }
-        else if (isInteracting && interactionButtonTriggered)
+        else if (isInteracting && context.performed)
         {
             interactingWith.UninteractWith(this);
         }
