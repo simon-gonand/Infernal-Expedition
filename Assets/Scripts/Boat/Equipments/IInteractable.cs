@@ -4,5 +4,6 @@ using UnityEngine;
 
 public interface IInteractable
 {
-    public void InteractWith();
+    public void InteractWith(PlayerController player);
+    public void UninteractWith(PlayerController player);
 }

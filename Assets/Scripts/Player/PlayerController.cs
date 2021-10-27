@@ -26,7 +26,10 @@ public class PlayerController : MonoBehaviour
 
 
     private Vector2 playerMovementInput = Vector2.zero;
-    private bool isInteracting = false;
+    private bool interactionButtonTriggered = false;
+    private IInteractable interactingWith;
+    private bool _isInteracting = false;
+    public bool isInteracting { get { return _isInteracting; } set { _isInteracting = value; } }
 
     // Start is called before the first frame update
     void Start()
@@ -43,8 +46,8 @@ public class PlayerController : MonoBehaviour
 
     public void OnInteraction(InputAction.CallbackContext context)
     {
-        isInteracting = context.action.triggered;
-        if (isInteracting)
+        interactionButtonTriggered = context.action.triggered;
+        if (!isInteracting && interactionButtonTriggered)
         {
             Vector3 startRayPos = self.position;
             startRayPos.y -= self.lossyScale.y / 2;
@@ -53,8 +56,13 @@ public class PlayerController : MonoBehaviour
             int layerMask = 1 << LayerMask.NameToLayer("Equipment");
             if (Physics.Raycast(startRayPos, self.forward, out hit, interactionDistance, layerMask))
             {
-                hit.collider.gameObject.GetComponent<IInteractable>().InteractWith();
+                interactingWith = hit.collider.gameObject.GetComponent<IInteractable>();
+                interactingWith.InteractWith(this);
             }
+        }
+        else if (isInteracting && interactionButtonTriggered)
+        {
+            interactingWith.UninteractWith(this);
         }
     }
 
@@ -69,6 +77,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerMovement();
+        if (!isInteracting)
+            PlayerMovement();
     }
 }

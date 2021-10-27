@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Plane = UnityEngine.Plane;
 
 public class FireCanon : MonoBehaviour, IInteractable
 {
@@ -18,9 +17,20 @@ public class FireCanon : MonoBehaviour, IInteractable
 
     private float nextFire;
 
-    public void InteractWith()
+    public void InteractWith(PlayerController player)
     {
-        Debug.Log("Player is interacting with canon");
+        player.isInteracting = true;
+        // Snap player to the canon
+        // Set unity event controllers just as boat just for canon
+        // Player boolean isInteracting?
+    }
+
+    public void UninteractWith(PlayerController player)
+    {
+        player.isInteracting = false;
+        // Remove unity events controller
+        // Unsnap player
+        // Player boolean isInteracting?
     }
 
     /*private void OnColliderEnter(Collider other)
