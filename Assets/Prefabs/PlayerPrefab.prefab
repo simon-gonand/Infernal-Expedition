@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 3
+  interactionDistance: 0.19
   boatTransform: {fileID: 0}
   self: {fileID: 3207150420227362538}
   selfCollider: {fileID: 3207150420227362537}

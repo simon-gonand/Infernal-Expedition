@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Plane = UnityEngine.Plane;
 
-public class FireCanon : MonoBehaviour
+public class FireCanon : MonoBehaviour, IInteractable
 {
     public GameObject ball;
 
@@ -17,6 +17,11 @@ public class FireCanon : MonoBehaviour
     [SerializeField]
 
     private float nextFire;
+
+    public void InteractWith()
+    {
+        Debug.Log("Player is interacting with canon");
+    }
 
     /*private void OnColliderEnter(Collider other)
     {

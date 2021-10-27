@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LifeSpan : MonoBehaviour
+public class CanonBallLifeSpan : MonoBehaviour
 {
     private void IsUnderWater()
     {

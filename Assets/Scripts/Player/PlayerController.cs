@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using DG.Tweening;
-
 
 public class PlayerController : MonoBehaviour
 {
@@ -52,10 +50,10 @@ public class PlayerController : MonoBehaviour
             startRayPos.y -= self.lossyScale.y / 2;
 
             RaycastHit hit;
-            int layerMask = 1 << 6;
+            int layerMask = 1 << LayerMask.NameToLayer("Equipment");
             if (Physics.Raycast(startRayPos, self.forward, out hit, interactionDistance, layerMask))
             {
-                Debug.Log("Player is interacting");
+                hit.collider.gameObject.GetComponent<IInteractable>().InteractWith();
             }
         }
     }
