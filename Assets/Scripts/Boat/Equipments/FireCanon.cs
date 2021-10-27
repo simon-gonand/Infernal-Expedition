@@ -21,21 +21,25 @@ public class FireCanon : MonoBehaviour, IInteractable
     public void InteractWith(PlayerController player)
     {
         player.isInteracting = true;
+
         // Snap player to the canon
         Vector3 newPlayerPosition = snapPoint.position;
         newPlayerPosition.y += player.self.lossyScale.y / 2;
         player.self.position = newPlayerPosition;
         player.self.forward = snapPoint.forward;
+
         // Set unity event controllers just as boat just for canon
-        // Player boolean isInteracting?
     }
 
     public void UninteractWith(PlayerController player)
     {
         player.isInteracting = false;
         // Remove unity events controller
-        // Unsnap player
-        // Player boolean isInteracting?
+    }
+
+    public void OnAction()
+    {
+        Fire();
     }
 
     /*private void OnColliderEnter(Collider other)
@@ -60,24 +64,13 @@ public class FireCanon : MonoBehaviour, IInteractable
 
     private void Fire()
     {
-        /* if (Input.GetButtonDown("Fire1") && Time.time > nextFire)
-         {
-             GameObject clone = Instantiate(ball, transform.position, transform.rotation);
-             Rigidbody rb = clone.AddComponent<Rigidbody>();
-             rb.velocity = transform.forward * Time.deltaTime * fireSpeed;
+        if (Time.time > nextFire)
+        {
+            GameObject clone = Instantiate(ball, transform.position, transform.rotation);
+            Rigidbody rb = clone.AddComponent<Rigidbody>();
+            rb.velocity = transform.forward * Time.deltaTime * fireSpeed;
 
-             nextFire = Time.time + fireRate;
-         }*/
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        Fire();
+            nextFire = Time.time + fireRate;
+        }
     }
 }

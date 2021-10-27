@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 7872276856116371720}
   - component: {fileID: 7872276856116371727}
   m_Layer: 6
-  m_Name: Canon
+  m_Name: CanonPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c39caa36293b7b44bed2e82cfa7921d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ball: {fileID: 3219174071420426623, guid: 110e4fc6a44ddd74196ef9d3a20233a9, type: 3}
+  ball: {fileID: 6383630120241030602, guid: 25391bd6561680e41af5c46686c51cb0, type: 3}
   fireSpeed: 4000
   fireRate: 1
   self: {fileID: 7872276856116371726}

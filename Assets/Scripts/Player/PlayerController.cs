@@ -40,6 +40,13 @@ public class PlayerController : MonoBehaviour
         playerMovementInput = context.ReadValue<Vector2>();
     }
 
+    public void OnAction(InputAction.CallbackContext context)
+    {
+        if (isInteracting && context.performed)
+            interactingWith.OnAction();
+        // else attack on action pressed
+    }
+
     public void OnInteraction(InputAction.CallbackContext context)
     {
         //Debug.Log(context.performed);

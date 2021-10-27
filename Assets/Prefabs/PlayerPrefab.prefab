@@ -177,6 +177,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 699e44a5-b181-499c-b086-1bb39970eaa4
     m_ActionName: Controls/PlayerInteraction[/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3207150420227362548}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e077ef7c-8bd0-4804-a2d9-96f0e89cee87
+    m_ActionName: Controls/PlayerAction[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Controls
