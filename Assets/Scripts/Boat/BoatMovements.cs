@@ -16,10 +16,10 @@ public class BoatMovements : MonoBehaviour
     private float steerSpeed;
 
     [Header("References")]
-    [SerializeField]
     public Rigidbody selfRigidBody;
-    [SerializeField]
     public Transform self;
+    [SerializeField]
+    private Rigidbody childRigidBody;
 
     private Vector2 movementInput = Vector2.zero;
 
@@ -42,6 +42,7 @@ public class BoatMovements : MonoBehaviour
         if (axisValue < 0 && speed > minSpeed || axisValue > 0 && speed < maxSpeed)
             speed += axisValue;
         selfRigidBody.velocity = self.forward * Time.deltaTime * speed;
+        childRigidBody.velocity = self.forward * Time.deltaTime * speed;
     }
 
     public void Steer(float steering)

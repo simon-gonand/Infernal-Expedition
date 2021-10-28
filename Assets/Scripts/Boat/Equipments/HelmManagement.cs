@@ -49,17 +49,16 @@ public class HelmManagement : MonoBehaviour, IInteractable
         steer = movements.x;
         if (movements.x == 0)
             InitRotation();
-        if (movements.x > 0 && self.rotation.z != 135.0f)
-        {
-            InitRotation();
-            self.Rotate(new Vector3(0.0f, 0.0f, 45.0f));
-        }
-        if (movements.x < 0 && self.rotation.z != 45.0f)
+        if (movements.x > 0 && self.rotation.z != 45.0)
         {
             InitRotation();
             self.Rotate(new Vector3(0.0f, 0.0f, -45.0f));
         }
-        //self.Rotate(new Vector3(0.0f, 0.0f, movements.x * 45.0f + self.rotation.z));
+        if (movements.x < 0 && self.rotation.z != 135.0f)
+        {
+            InitRotation();
+            self.Rotate(new Vector3(0.0f, 0.0f, 45.0f));
+        }
     }
 
     private void FixedUpdate()
