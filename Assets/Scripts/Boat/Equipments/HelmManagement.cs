@@ -36,6 +36,7 @@ public class HelmManagement : MonoBehaviour, IInteractable
         player.isInteracting = false;
 
         InitRotation();
+        steer = 0.0f;
     }
 
     public void OnAction()
