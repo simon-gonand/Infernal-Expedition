@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class FollowingBoat : MonoBehaviour
 {
-    public Transform boat;
+    [SerializeField]
+    private Transform self;
+
     private Vector3 initialOffset;
+    private Vector3 initialPos;
 
     // Start is called before the first frame update
     void Start()
     {
-        initialOffset = transform.position - boat.position;
+        initialOffset = self.position - BoatMovements.instance.self.position;
+        initialPos = self.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(0, 0,boat.position.z) + initialOffset;
+        self.position = new Vector3(initialPos.x, initialPos.y, BoatMovements.instance.self.position.z + initialOffset.z) ;
     }
 }
