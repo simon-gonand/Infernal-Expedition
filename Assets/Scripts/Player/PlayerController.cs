@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     [Range(0,2)]private float interactionDistance;
 
-    [Header("Boat References")]
+    [System.NonSerialized]
     public Transform boatTransform;
 
     [Header("Self References")]
