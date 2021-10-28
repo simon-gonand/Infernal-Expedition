@@ -42,7 +42,7 @@ public class BoatMovements : MonoBehaviour
         if (axisValue < 0 && speed > minSpeed || axisValue > 0 && speed < maxSpeed)
             speed += axisValue;
         selfRigidBody.velocity = self.forward * Time.deltaTime * speed;
-        childRigidBody.velocity = self.forward * Time.deltaTime * speed;
+        //childRigidBody.velocity = self.forward * Time.deltaTime * speed;
     }
 
     public void Steer(float steering)
@@ -55,6 +55,5 @@ public class BoatMovements : MonoBehaviour
     void FixedUpdate()
     {
         SetVelocity();
-        //Steer();
     }
 }

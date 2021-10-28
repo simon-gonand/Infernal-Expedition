@@ -14,7 +14,6 @@ public class HelmManagement : MonoBehaviour, IInteractable
 
     private void InitRotation()
     {
-        Debug.Log(initRotationZ);
         Vector3 newRotation = self.rotation.eulerAngles;
         newRotation.z = initRotationZ;
         self.rotation = Quaternion.Euler(newRotation);

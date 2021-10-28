@@ -27,14 +27,11 @@ public class FireCanon : MonoBehaviour, IInteractable
         newPlayerPosition.y += player.self.lossyScale.y / 2;
         player.self.position = newPlayerPosition;
         player.self.forward = snapPoint.forward;
-
-        // Set unity event controllers just as boat just for canon
     }
 
     public void UninteractWith(PlayerController player)
     {
         player.isInteracting = false;
-        // Remove unity events controller
     }
 
     public void OnAction()
@@ -46,26 +43,6 @@ public class FireCanon : MonoBehaviour, IInteractable
     {
         // Turn canon ?
     } 
-
-    /*private void OnColliderEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            CapsuleCollider playerCollider = (CapsuleCollider)other;
-            Vector3 dir = (other.transform.localPosition - self.localPosition).normalized;
-            BoxCollider selfBox = self.GetComponent<BoxCollider>();
-
-            Vector3 capsulePt = playerCollider.center + (Vector3.Scale(-dir,playerCollider.transform.localScale)* playerCollider.radius);
-
-            RaycastHit hit;
-            Physics.Linecast(selfBox.center, playerCollider.center, out hit) ;
-            Vector3 selfCollPt = hit.point;
-
-            Vector3 offset = capsulePt- selfCollPt;
-            offset.y = 0;
-            other.transform.localPosition -= offset*0.5f;
-        }
-    }*/
 
     private void Fire()
     {
