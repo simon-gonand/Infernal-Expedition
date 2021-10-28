@@ -10,9 +10,20 @@ public class HelmManagement : MonoBehaviour, IInteractable
     private Transform snapPoint;
 
     private float steer = 0.0f;
+    private float initRotationZ;
+
+    private void InitRotation()
+    {
+        Debug.Log(initRotationZ);
+        Vector3 newRotation = self.rotation.eulerAngles;
+        newRotation.z = initRotationZ;
+        self.rotation = Quaternion.Euler(newRotation);
+    }
 
     public void InteractWith(PlayerController player)
     {
+        initRotationZ = self.rotation.eulerAngles.z;
+
         player.isInteracting = true;
 
         Vector3 newPlayerPosition = snapPoint.position;
@@ -24,6 +35,8 @@ public class HelmManagement : MonoBehaviour, IInteractable
     public void UninteractWith(PlayerController player)
     {
         player.isInteracting = false;
+
+        InitRotation();
     }
 
     public void OnAction()
@@ -34,6 +47,18 @@ public class HelmManagement : MonoBehaviour, IInteractable
     public void OnMove(Vector2 movements)
     {
         steer = movements.x;
+        if (movements.x == 0)
+            InitRotation();
+        if (movements.x > 0 && self.rotation.z != 135.0f)
+        {
+            InitRotation();
+            self.Rotate(new Vector3(0.0f, 0.0f, 45.0f));
+        }
+        if (movements.x < 0 && self.rotation.z != 45.0f)
+        {
+            InitRotation();
+            self.Rotate(new Vector3(0.0f, 0.0f, -45.0f));
+        }
         //self.Rotate(new Vector3(0.0f, 0.0f, movements.x * 45.0f + self.rotation.z));
     }
 
