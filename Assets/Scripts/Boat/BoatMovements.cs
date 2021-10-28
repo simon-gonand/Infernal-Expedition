@@ -16,10 +16,10 @@ public class BoatMovements : MonoBehaviour
     private float steerSpeed;
 
     [Header("References")]
-    [SerializeField]
     public Rigidbody selfRigidBody;
-    [SerializeField]
     public Transform self;
+    [SerializeField]
+    private Rigidbody childRigidBody;
 
     private Vector2 movementInput = Vector2.zero;
 
@@ -31,26 +31,23 @@ public class BoatMovements : MonoBehaviour
         instance = this;
     }
 
-    void Start()
-    {
-        
-    }
     public void OnMove(InputAction.CallbackContext context)
     {
         movementInput = context.ReadValue<Vector2>();
     }
 
-    private void SetVelocity()
+    public void SetVelocity()
     {
         float axisValue = movementInput.y;
         if (axisValue < 0 && speed > minSpeed || axisValue > 0 && speed < maxSpeed)
             speed += axisValue;
         selfRigidBody.velocity = self.forward * Time.deltaTime * speed;
+        //childRigidBody.velocity = self.forward * Time.deltaTime * speed;
     }
 
-    private void Steer()
+    public void Steer(float steering)
     {
-        float steering = movementInput.x * steerSpeed;
+        steering *= steerSpeed;
         selfRigidBody.MoveRotation(selfRigidBody.rotation * Quaternion.Euler(new Vector3(0, steering, 0) * Time.deltaTime));
     }
 
@@ -58,6 +55,5 @@ public class BoatMovements : MonoBehaviour
     void FixedUpdate()
     {
         SetVelocity();
-        Steer();
     }
 }

@@ -40,7 +40,15 @@ public class @Controller : IInputActionCollection, IDisposable
                     ""id"": ""699e44a5-b181-499c-b086-1bb39970eaa4"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""PlayerAction"",
+                    ""type"": ""Button"",
+                    ""id"": ""e077ef7c-8bd0-4804-a2d9-96f0e89cee87"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -186,6 +194,17 @@ public class @Controller : IInputActionCollection, IDisposable
                     ""action"": ""PlayerInteraction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""207ef1c6-cdea-49e2-8a1d-10e2e9dd0c0a"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""PlayerAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -220,6 +239,7 @@ public class @Controller : IInputActionCollection, IDisposable
         m_Controls_PlayerMovements = m_Controls.FindAction("PlayerMovements", throwIfNotFound: true);
         m_Controls_BoatMovements = m_Controls.FindAction("BoatMovements", throwIfNotFound: true);
         m_Controls_PlayerInteraction = m_Controls.FindAction("PlayerInteraction", throwIfNotFound: true);
+        m_Controls_PlayerAction = m_Controls.FindAction("PlayerAction", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -272,6 +292,7 @@ public class @Controller : IInputActionCollection, IDisposable
     private readonly InputAction m_Controls_PlayerMovements;
     private readonly InputAction m_Controls_BoatMovements;
     private readonly InputAction m_Controls_PlayerInteraction;
+    private readonly InputAction m_Controls_PlayerAction;
     public struct ControlsActions
     {
         private @Controller m_Wrapper;
@@ -279,6 +300,7 @@ public class @Controller : IInputActionCollection, IDisposable
         public InputAction @PlayerMovements => m_Wrapper.m_Controls_PlayerMovements;
         public InputAction @BoatMovements => m_Wrapper.m_Controls_BoatMovements;
         public InputAction @PlayerInteraction => m_Wrapper.m_Controls_PlayerInteraction;
+        public InputAction @PlayerAction => m_Wrapper.m_Controls_PlayerAction;
         public InputActionMap Get() { return m_Wrapper.m_Controls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -297,6 +319,9 @@ public class @Controller : IInputActionCollection, IDisposable
                 @PlayerInteraction.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPlayerInteraction;
                 @PlayerInteraction.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPlayerInteraction;
                 @PlayerInteraction.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPlayerInteraction;
+                @PlayerAction.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPlayerAction;
+                @PlayerAction.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPlayerAction;
+                @PlayerAction.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPlayerAction;
             }
             m_Wrapper.m_ControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -310,6 +335,9 @@ public class @Controller : IInputActionCollection, IDisposable
                 @PlayerInteraction.started += instance.OnPlayerInteraction;
                 @PlayerInteraction.performed += instance.OnPlayerInteraction;
                 @PlayerInteraction.canceled += instance.OnPlayerInteraction;
+                @PlayerAction.started += instance.OnPlayerAction;
+                @PlayerAction.performed += instance.OnPlayerAction;
+                @PlayerAction.canceled += instance.OnPlayerAction;
             }
         }
     }
@@ -337,5 +365,6 @@ public class @Controller : IInputActionCollection, IDisposable
         void OnPlayerMovements(InputAction.CallbackContext context);
         void OnBoatMovements(InputAction.CallbackContext context);
         void OnPlayerInteraction(InputAction.CallbackContext context);
+        void OnPlayerAction(InputAction.CallbackContext context);
     }
 }

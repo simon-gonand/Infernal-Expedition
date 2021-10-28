@@ -2,21 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using DG.Tweening;
-
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
     [Header("Stat")]
-    private float playerSpeed = 2.0f;
+    private float playerSpeed;
+    [SerializeField]
+    [Range(0,2)]private float interactionDistance;
 
-    [Header("Boat References")]
+    [System.NonSerialized]
     public Transform boatTransform;
 
     [Header("Self References")]
-    [SerializeField]
-    private Transform self;
+    public Transform self;
     /*[SerializeField]
     private Rigidbody selfRigidbody;*/
     [SerializeField]
@@ -24,6 +23,10 @@ public class PlayerController : MonoBehaviour
 
 
     private Vector2 playerMovementInput = Vector2.zero;
+
+    private IInteractable interactingWith;
+    private bool _isInteracting = false;
+    public bool isInteracting { get { return _isInteracting; } set { _isInteracting = value; } }
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +38,39 @@ public class PlayerController : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        playerMovementInput = context.ReadValue<Vector2>();
+        if (!isInteracting)
+            playerMovementInput = context.ReadValue<Vector2>();
+        else
+            interactingWith.OnMove(context.ReadValue<Vector2>());
+    }
+
+    public void OnAction(InputAction.CallbackContext context)
+    {
+        if (isInteracting && context.performed)
+            interactingWith.OnAction();
+        // else attack on action pressed
+    }
+
+    public void OnInteraction(InputAction.CallbackContext context)
+    {
+        //Debug.Log(context.performed);
+        if (!isInteracting && context.performed)
+        {
+            Vector3 startRayPos = self.position;
+            startRayPos.y -= self.lossyScale.y / 2;
+
+            RaycastHit hit;
+            int layerMask = 1 << LayerMask.NameToLayer("Equipment");
+            if (Physics.Raycast(startRayPos, self.forward, out hit, interactionDistance, layerMask))
+            {
+                interactingWith = hit.collider.gameObject.GetComponent<IInteractable>();
+                interactingWith.InteractWith(this);
+            }
+        }
+        else if (isInteracting && context.performed)
+        {
+            interactingWith.UninteractWith(this);
+        }
     }
 
     private void PlayerMovement()
@@ -49,6 +84,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerMovement();
+        if (!isInteracting)
+            PlayerMovement();
     }
 }

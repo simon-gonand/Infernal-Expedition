@@ -27,7 +27,15 @@
                     "id": "699e44a5-b181-499c-b086-1bb39970eaa4",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "Press"
+                },
+                {
+                    "name": "PlayerAction",
+                    "type": "Button",
+                    "id": "e077ef7c-8bd0-4804-a2d9-96f0e89cee87",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
                 }
             ],
             "bindings": [
@@ -171,6 +179,17 @@
                     "processors": "",
                     "groups": "Controller",
                     "action": "PlayerInteraction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "207ef1c6-cdea-49e2-8a1d-10e2e9dd0c0a",
+                    "path": "<Keyboard>/space",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "PlayerAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
