@@ -42,6 +42,11 @@ public class FireCanon : MonoBehaviour, IInteractable
         Fire();
     }
 
+    public void OnMove(Vector2 movements)
+    {
+        // Turn canon ?
+    } 
+
     /*private void OnColliderEnter(Collider other)
     {
         if (other.CompareTag("Player"))

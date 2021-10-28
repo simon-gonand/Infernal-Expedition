@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
 
 
     private Vector2 playerMovementInput = Vector2.zero;
+
     private IInteractable interactingWith;
     private bool _isInteracting = false;
     public bool isInteracting { get { return _isInteracting; } set { _isInteracting = value; } }
@@ -37,7 +38,10 @@ public class PlayerController : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        playerMovementInput = context.ReadValue<Vector2>();
+        if (!isInteracting)
+            playerMovementInput = context.ReadValue<Vector2>();
+        else
+            interactingWith.OnMove(context.ReadValue<Vector2>());
     }
 
     public void OnAction(InputAction.CallbackContext context)
