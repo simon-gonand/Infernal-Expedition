@@ -6594,7 +6594,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4653d04010734e14ba019f16edfac040, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boat: {fileID: 1743407748}
   self: {fileID: 1141836489}
+  selfCollider: {fileID: 1141836491}
 --- !u!65 &1141836491
 BoxCollider:
   m_ObjectHideFlags: 0
