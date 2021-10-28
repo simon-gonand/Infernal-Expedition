@@ -32,8 +32,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         boatTransform = BoatMovements.instance.self;
-
-        playerInput.actionEvents[1].AddListener(BoatMovements.instance.OnMove);
     }
 
     public void OnMove(InputAction.CallbackContext context)

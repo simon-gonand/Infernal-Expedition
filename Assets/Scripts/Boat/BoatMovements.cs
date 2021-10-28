@@ -1,56 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class BoatMovements : MonoBehaviour
 {
+    [SerializeField]
+    private float steerSpeed;
     [SerializeField]
     [Header("Stats")]
     private float minSpeed;
     [SerializeField]
     private float maxSpeed;
-    [SerializeField]
-    private float speed;
-    [SerializeField]
-    private float steerSpeed;
 
     [Header("References")]
     public Rigidbody selfRigidBody;
     public Transform self;
 
-    private Vector2 movementInput = Vector2.zero;
-
+    private float currentSpeed;
 
     public static BoatMovements instance;
 
     private void Awake()
     {
         instance = this;
+
+        currentSpeed = maxSpeed / 2 - minSpeed / 2;
     }
 
-    public void OnMove(InputAction.CallbackContext context)
+    public void SetVelocity(float speed)
     {
-        movementInput = context.ReadValue<Vector2>();
-    }
-
-    public void SetVelocity()
-    {
-        float axisValue = movementInput.y;
-        if (axisValue < 0 && speed > minSpeed || axisValue > 0 && speed < maxSpeed)
-            speed += axisValue;
-        selfRigidBody.velocity = self.forward * Time.deltaTime * speed;
+        if (speed < 0 && currentSpeed > minSpeed || speed > 0 && currentSpeed < maxSpeed)
+            currentSpeed += speed;
+        selfRigidBody.velocity = self.forward * Time.deltaTime * currentSpeed;
     }
 
     public void Steer(float steering)
     {
         steering *= steerSpeed;
         selfRigidBody.MoveRotation(selfRigidBody.rotation * Quaternion.Euler(new Vector3(0, steering, 0) * Time.deltaTime));
-    }
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        SetVelocity();
     }
 }
