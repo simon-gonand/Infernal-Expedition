@@ -15,6 +15,8 @@ public class FireCanon : MonoBehaviour, IInteractable
     private Transform self;
     [SerializeField]
     private Transform snapPoint;
+    [SerializeField]
+    private Transform ballSpawnPoint;
 
     private float nextFire;
 
@@ -48,11 +50,9 @@ public class FireCanon : MonoBehaviour, IInteractable
     {
         if (Time.time > nextFire)
         {
-            Vector3 ballSpawnPosition = self.position;
-            ballSpawnPosition.x += self.lossyScale.x;
-            GameObject ballClone = Instantiate(ball, ballSpawnPosition, self.rotation);
+            GameObject ballClone = Instantiate(ball, ballSpawnPoint.position, self.rotation);
             Rigidbody rb = ballClone.AddComponent<Rigidbody>();
-            rb.velocity = transform.forward * Time.deltaTime * fireSpeed;
+            rb.AddForce(ballSpawnPoint.forward * fireSpeed, ForceMode.Impulse);
 
             ballClone.GetComponent<CanonBallLifeSpan>().SetCanonWhichFired(self);
 
