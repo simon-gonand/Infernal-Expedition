@@ -22,6 +22,8 @@ public class SailManagement : MonoBehaviour, IInteractable
     public void UninteractWith(PlayerController player)
     {
         player.isInteracting = false;
+
+        speed = 0.0f;
     }
 
     public void OnAction()
