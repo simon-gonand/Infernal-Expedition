@@ -32,7 +32,6 @@ public class BoatMovements : MonoBehaviour
         if (speed < 0 && currentSpeed > minSpeed || speed > 0 && currentSpeed < maxSpeed)
             currentSpeed += speed;
         selfRigidBody.velocity = self.forward * Time.deltaTime * currentSpeed;
-        Debug.Log(currentSpeed);
     }
 
     public void Steer(float steering)

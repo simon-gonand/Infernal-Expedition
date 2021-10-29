@@ -27,14 +27,6 @@ public class @Controller : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""BoatMovements"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""9e3ae14b-ab42-4eca-81a7-8f11f34b106c"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
                     ""name"": ""PlayerInteraction"",
                     ""type"": ""Button"",
                     ""id"": ""699e44a5-b181-499c-b086-1bb39970eaa4"",
@@ -119,61 +111,6 @@ public class @Controller : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""Arrows"",
-                    ""id"": ""86801f63-810f-4511-94fa-854826542fe1"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""BoatMovements"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""c7e8062c-4da1-4648-8f70-5ec6983f23c9"",
-                    ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""BoatMovements"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""3bbbea0d-29d2-4032-b737-c0c65e7934cc"",
-                    ""path"": ""<Keyboard>/downArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""BoatMovements"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""2a36bc7b-5c6a-47cf-822f-c365b7ecf361"",
-                    ""path"": ""<Keyboard>/leftArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""BoatMovements"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""6231ded2-8810-4c76-a8d7-aecd6a262561"",
-                    ""path"": ""<Keyboard>/rightArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""BoatMovements"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": """",
                     ""id"": ""b33c6f87-e38f-47d4-a1f8-5220bf572cbb"",
                     ""path"": ""<Keyboard>/f"",
@@ -187,7 +124,7 @@ public class @Controller : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""6dcd6c43-942d-4188-b594-0f1ed881bdfc"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Controller"",
@@ -202,6 +139,17 @@ public class @Controller : IInputActionCollection, IDisposable
                     ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
+                    ""action"": ""PlayerAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5ed3ea05-2873-48db-a40b-275f98f73301"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
                     ""action"": ""PlayerAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -237,7 +185,6 @@ public class @Controller : IInputActionCollection, IDisposable
         // Controls
         m_Controls = asset.FindActionMap("Controls", throwIfNotFound: true);
         m_Controls_PlayerMovements = m_Controls.FindAction("PlayerMovements", throwIfNotFound: true);
-        m_Controls_BoatMovements = m_Controls.FindAction("BoatMovements", throwIfNotFound: true);
         m_Controls_PlayerInteraction = m_Controls.FindAction("PlayerInteraction", throwIfNotFound: true);
         m_Controls_PlayerAction = m_Controls.FindAction("PlayerAction", throwIfNotFound: true);
     }
@@ -290,7 +237,6 @@ public class @Controller : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Controls;
     private IControlsActions m_ControlsActionsCallbackInterface;
     private readonly InputAction m_Controls_PlayerMovements;
-    private readonly InputAction m_Controls_BoatMovements;
     private readonly InputAction m_Controls_PlayerInteraction;
     private readonly InputAction m_Controls_PlayerAction;
     public struct ControlsActions
@@ -298,7 +244,6 @@ public class @Controller : IInputActionCollection, IDisposable
         private @Controller m_Wrapper;
         public ControlsActions(@Controller wrapper) { m_Wrapper = wrapper; }
         public InputAction @PlayerMovements => m_Wrapper.m_Controls_PlayerMovements;
-        public InputAction @BoatMovements => m_Wrapper.m_Controls_BoatMovements;
         public InputAction @PlayerInteraction => m_Wrapper.m_Controls_PlayerInteraction;
         public InputAction @PlayerAction => m_Wrapper.m_Controls_PlayerAction;
         public InputActionMap Get() { return m_Wrapper.m_Controls; }
@@ -313,9 +258,6 @@ public class @Controller : IInputActionCollection, IDisposable
                 @PlayerMovements.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPlayerMovements;
                 @PlayerMovements.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPlayerMovements;
                 @PlayerMovements.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPlayerMovements;
-                @BoatMovements.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnBoatMovements;
-                @BoatMovements.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnBoatMovements;
-                @BoatMovements.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnBoatMovements;
                 @PlayerInteraction.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPlayerInteraction;
                 @PlayerInteraction.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPlayerInteraction;
                 @PlayerInteraction.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPlayerInteraction;
@@ -329,9 +271,6 @@ public class @Controller : IInputActionCollection, IDisposable
                 @PlayerMovements.started += instance.OnPlayerMovements;
                 @PlayerMovements.performed += instance.OnPlayerMovements;
                 @PlayerMovements.canceled += instance.OnPlayerMovements;
-                @BoatMovements.started += instance.OnBoatMovements;
-                @BoatMovements.performed += instance.OnBoatMovements;
-                @BoatMovements.canceled += instance.OnBoatMovements;
                 @PlayerInteraction.started += instance.OnPlayerInteraction;
                 @PlayerInteraction.performed += instance.OnPlayerInteraction;
                 @PlayerInteraction.canceled += instance.OnPlayerInteraction;
@@ -363,7 +302,6 @@ public class @Controller : IInputActionCollection, IDisposable
     public interface IControlsActions
     {
         void OnPlayerMovements(InputAction.CallbackContext context);
-        void OnBoatMovements(InputAction.CallbackContext context);
         void OnPlayerInteraction(InputAction.CallbackContext context);
         void OnPlayerAction(InputAction.CallbackContext context);
     }
